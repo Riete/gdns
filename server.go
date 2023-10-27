@@ -20,17 +20,10 @@ func (s *Server) Shutdown() error {
 }
 
 func NewTcpDnsServer(ip, port string, handler dns.Handler) *Server {
-	s := &dns.Server{Addr: ip + ":" + port, Net: "tcp"}
-	if handler != nil {
-		s.Handler = handler
-	}
-	return &Server{s: s}
+	return &Server{s: &dns.Server{Addr: ip + ":" + port, Net: "tcp", Handler: handler}}
 }
 
 func NewUdpDnsServer(ip, port string, handler dns.Handler) *Server {
-	s := &dns.Server{Addr: ip + ":" + port, Net: "udp"}
-	if handler != nil {
-		s.Handler = handler
-	}
-	return &Server{s: s}
+	return &Server{s: &dns.Server{Addr: ip + ":" + port, Net: "udp", Handler: handler}}
+
 }
