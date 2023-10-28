@@ -1,8 +1,6 @@
 module github.com/riete/gdns
 
-go 1.21.1
-
-toolchain go1.21.3
+go 1.21
 
 require (
 	github.com/miekg/dns v1.1.56 // indirect
